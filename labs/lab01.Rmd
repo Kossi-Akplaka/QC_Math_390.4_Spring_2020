@@ -1,6 +1,6 @@
 ---
 title: "Lab 1"
-author: "Your Name Here"
+author: "Kossi Akplaka"
 output: pdf_document
 date: "11:59PM February 8, 2020"
 ---
@@ -52,12 +52,14 @@ sum(log(1 / 2^(0:499)))
 
 ```{r}
 x = c(Inf, seq(from = 20, to = -20, by = -2))
+x
 ```
 
 Create the sequence `x = [log_3(Inf), log_3(100), log_3(98), ... log_3(-20)]`.
 
 ```{r}
 x=log(c(Inf, seq( from = 100, to = -20, by = -2)), base = 3)
+x
 ```
 
 Comment on the appropriateness of the non-numeric values.
@@ -69,6 +71,7 @@ NaN's come from log(-number). Inf comes from log3(Inf) and -Inf comes from log3(
 
 ```{r}
 is_positive_real = (x > 0) & (x != Inf) & (!is.nan(x))
+is_positive_real
 ```
 
 * Locate the indices of the non-real numbers in this vector. Hint: use the `which` function.
@@ -118,6 +121,7 @@ y <- x[is.finite(x)]
 y
 ```
 
+
 * Use the left rectangle method to numerically integrate x^2 from 0 to 1 with rectangle size 1e-6.
 
 ```{r}
@@ -142,15 +146,15 @@ mean(sample(c(0,1), size = 500, replace = TRUE, prob = c(.1, .9)))
 * In class we considered a variable `x_3` which measured "criminality". We imagined L = 4 levels "none", "infraction", "misdimeanor" and "felony". Create a variable `x3` here with 100 random elements (equally probable). Create it as a nominal (i.e. unordered) factor.
 
 ```{r}
-#TO-DO
+x3 = factor(sample(c("none", "infraction", "misdimeanor", "felony"), size = 100, replace = TRUE))
+x3
 ```
 
 * Use `x_3` to create `x_3_bin`, a binary feature where 0 is no crime and 1 is any crime.
 
 ```{r}
-#TO-DO
+x_3_bin <- factor(x3, levels = c(0,1,1,1), labels = c("felony","infraction", "misdimeanor", "none")).
 ```
-
 * Use `x_3` to create `x_3_ord`, an ordered, nominal factor variable. Ensure the proper ordinal ordering.
 
 ```{r}
