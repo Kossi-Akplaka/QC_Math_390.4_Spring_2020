@@ -142,39 +142,29 @@ X[order(rowSums(X, na.rm = TRUE), decreasing = TRUE), ]
 
 ```{r}
 c(apply(X, 1, sd, na.rm = TRUE), apply(X, 2, sd, na.rm = TRUE))
-
 ```
 * Use the `apply` function to compute a vector whose entries are the count of entries that are 1 or 2 in each column. This should be one line.
 
-```{r}
-split(X, col(X), drop = TRUE)
+``{r}
+apply(X, 2, function(x) length(which(!is.na(x) & x > 0)))
 ```
 
 * Use the `split` function to create a list whose keys are the column number and values are the vector of the columns. Look at the last example in the documentation `?split`.
 
 ```{r}
 split(X, col(X), drop = TRUE)
-
 ```
 
 * In one statement, use the `lapply` function to create a list whose keys are the column number and values are themselves a list with keys: "min" whose value is the minimum of the column, "max" whose value is the maximum of the column, "pct_missing" is the proportion of missingness in the column and "first_NA" whose value is the row number of the first time the NA appears.
 
 ```{r}
-min_max_list = lapply(split(X, col(X), drop = TRUE), 
-                      function(X){
-                        minn = min(X, na.rm = TRUE)
-                        maxx = max(X, na.rm = TRUE)
-                        pct_missing = (sum(is.na(X)) / length(X)) * 100
-                        first_NA = min(which(is.na(X)))
-                        c(minn, maxx, pct_missing, first_NA)
-                        })
-min_max_list
+#TO-DO
 ```
 
 * Create a vector `v` consisting of a sample of 1,000 iid normal realizations with mean -10 and variance 100.
 
 ```{r}
-v = rnorm(1000, mean = -10, sd = 10)
+v = rnorm()
 ```
 
 
@@ -196,52 +186,32 @@ my_reverse = function(v){
 * Create a function `flip_matrix` which takes as required input a matrix, an argument `dim_to_rev` that returns the matrix with the rows in reverse order or the columns in reverse order depending on the `dim_to_rev` argument. Let the default be the dimension of the matrix that is greater.
 
 ```{r}
-flip_matrix = function(dim_to_rev){
-   if(nrow(dim_to_rev) > ncol(dim_to_rev)){
-     
-   dim_to_rev[nrow(dim_to_rev):1, ]
-   }else{
-     dim_to_rev[ , ncol(dim_to_rev):1]
-   }
-  }
+#TO-DO
 ```
 
 * Find the average of `v` and the standard error of `v`.
 
 ```{r}
-mean (v)
-sd(v)
+#TO-DO
 ```
-
 
 * Find the 5%ile of `v` and use the `qnorm` function to compute what it theoretically should be. Is the estimate about what is expected by theory?
 
 ```{r}
-quantile(v, probs = (.05))
-qnorm(.05, mean = -10, sd = 10)
+#TO-DO
 ```
 
 * What is the percentile of `v` that corresponds to the value 0? What should it be theoretically? Is the estimate about what is expected by theory?
 
 ```{r}
-f = ecdf(v)
-f(0) * 100
+#TO-DO
 ```
 
 * Create a list named `my_list` with keys "A", "B", ... where the entries are arrays of size 1, 2 x 2, 3 x 3 x 3, etc. Fill the array with the numbers 1, 2, 3, etc. Make 8 entries.
 
 
 ```{r}
-a = array(1)
-b = array(2, c(2,2))
-c = array(3, c(3,3,3))
-d = array(4, c(4,4,4,4))
-e = array(5, c(5,5,5,5,5))
-f = array(6, c(6,6,6,6,6,6))
-g = array(7, c(7,7,7,7,7,7,7))
-h = array(8, c(8,8,8,8,8,8,8,8))
-my_list = list("A" = a, "B" = b, "C" = c, "D" = d, "E" = e, "F" = f, "G" = g, "H" = h)
-my_list
+#TO-DO
 ```
 
 Run the following code:
@@ -252,12 +222,12 @@ lapply(my_list, object.size)
 
 Use `?object.size` to read about what these functions do. Then explain the output you see above. For the later arrays, does it make sense given the dimensions of the arrays?
 
-#while this function ONLY provides a rough indication of the memory being used, it does make sense for the higher dimension arrays using up more memory. The more dimesions you have, the more space being taken up, in essence, the more memory being used. 
+#TO-DO
 
 Now cleanup the namespace by deleting all stored objects and functions:
 
 ```{r}
-rm(list = ls())
+#TO-DO
 ```
 
 ## A little about strings
